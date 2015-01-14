@@ -1,0 +1,54 @@
+{namespace cr=CIC\Cicregister\ViewHelpers}
+
+<f:layout name="Default"/>
+
+<f:section name="main">
+	<div class="Cicregister">
+		<h1 class="page-header">Update Profile</h1>
+
+		<f:flashMessages renderMode="ul" class="unstyled well alert-success"/>
+
+		<f:form method="post" action="update" name="frontendUser" class="ym-form"
+				object="{frontendUser}">
+            
+            <f:render partial="TextInput" arguments="{required: 'true', inputClass: 'span4', propertyName: 'firstName', propertyLabel: 'First Name'}"/>                
+            
+            <f:render partial="TextInput" arguments="{required: 'true', inputClass: 'span4', propertyName: 'lastName', propertyLabel: 'Last Name'}"/>                
+            
+            <div class="ym-fbox">
+					<label for="cicregister-password">Update Password: </label>
+				    <f:form.password id="cicregister-password" name="password[]"/>
+                
+            </div>
+            <f:render partial="FieldError.html" arguments="{property: 'password'}"/>
+           
+			<div class="ym-fbox">				
+                <label for="cicregister-confirmPassword">Confirm Update Password: </label>
+                <f:form.password id="cicregister-confirmPassword" name="password[]"/>
+			</div>
+            <f:render partial="FieldError.html" arguments="{property: 'password'}"/>				
+
+			<f:render partial="TextInput" arguments="{inputClass: 'span8', propertyName: 'email', propertyLabel: 'Email Address'}"/>
+			
+            <f:render partial="TextInput" arguments="{inputClass: 'span4', propertyName: 'company', propertyLabel: 'Organization Name'}"/>
+            
+            <f:render partial="TextInput" arguments="{inputClass: 'span4', propertyName: 'title', propertyLabel: 'Position Title'}"/>
+			
+            <f:render partial="TextInput" arguments="{inputClass: 'span8', propertyName: 'address', propertyLabel: 'Street Address'}"/>
+			
+            <f:render partial="TextInput" arguments="{inputClass: 'span4', propertyName: 'city', propertyLabel: 'City'}"/>
+			
+            <f:render partial="TextInput" arguments="{inputClass: 'span4', propertyName: 'zip', propertyLabel: 'Zip Code'}"/>
+			
+            <f:render partial="TextInput" arguments="{inputClass: 'span8', propertyName: 'telephone', propertyLabel: 'Telephone'}"/>
+			
+            <f:render partial="TextInput" arguments="{inputClass: 'span8', propertyName: 'www', propertyLabel: 'Website'}"/>
+			
+			<div class="ym-fbox-footer">
+			    <f:form.submit class="ym-button ym-primary" value="Update Account"/>
+			</div>			
+
+		</f:form>
+	</div>
+
+</f:section>

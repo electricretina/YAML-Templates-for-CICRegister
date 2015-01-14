@@ -1,0 +1,13 @@
+<f:form.validationResults for="{property}">
+	<f:if condition="{validationResults.flattenedErrors}">
+	<div class="ym-fbox ym-error">
+		<f:for each="{validationResults.errors}" as="error">
+			<p class="ym-message">
+				<f:translate
+						key="LLL:EXT:cicregister/Resources/Private/Language/locallang.xml:form-frontendUserController-{property}-{error.code}"
+						default="{error.message} (#{error.code})"/>
+			</p>
+		</f:for>
+	</div>
+	</f:if>
+</f:form.validationResults>

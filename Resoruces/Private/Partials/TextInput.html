@@ -1,0 +1,6 @@
+<label for="cicregister-frontendUser-{propertyName}">{propertyLabel}<f:if condition="{required}"><span class="ym-required">(required)</span></f:if> </label>
+<f:form.textfield class="{inputClass}" id="cicregister-frontendUser-{propertyName}" property="{propertyName}"/>
+
+<div id="cicregister-frontendUser-{propertyName}-errors" class="errorWrap ym-error">
+	<f:render partial="FieldError.html" arguments="{property: 'frontendUser.{propertyName}'}"/>
+</div>

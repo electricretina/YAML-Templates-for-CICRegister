@@ -1,0 +1,49 @@
+{namespace cr = CIC\Cicregister\ViewHelpers}
+
+<p class="lead with-trim">Registering takes less than a minute, and we promise
+	we will never share your information with third parties.</p>
+
+<ul class="unstyled">
+	<li>
+		<f:flashMessages renderMode="div" class="flash-messages well alert-error"/>
+	</li>
+</ul>
+
+<f:form method="post"
+		action="create"
+		pageUid="{viewSettings.formTargetPid}"
+		name="frontendUser"
+		pluginName="Create"
+		class="CicregisterForm {f:if(condition:'{viewSettings.disableAjax}', then:'CicregisterForm-New-AjaxDisabled', else:'CicregisterForm-New-Ajax')} CicregisterForm-New ym-form"
+		id="cicregister-newform"
+		object="{frontendUser}">
+    
+    <div class="ym-fbox">
+        <f:render partial="TextInput" arguments="{inputClass: 'span8', propertyName: 'email', propertyLabel: 'Email Address'}"/>        
+    </div>
+    <div class="ym-fbox">
+        <f:render partial="TextInput" arguments="{inputClass: 'span4', propertyName: 'firstName', propertyLabel: 'First Name'}"/>
+    </div>
+    <div class="ym-fbox">
+        <f:render partial="TextInput" arguments="{inputClass: 'span4', propertyName: 'lastName', propertyLabel: 'Last Name'}"/>
+    </div>
+    <div class="ym-fbox">
+        <label for="cicregister-password">Password: </label>
+        <f:form.password class="span4 {cr:ifIsError(key:'password', then:'f3-form-error')}" id="cicregister-password" name="password[]"/>
+        <div id="cicregister-password-errors" class="errorWrap ym-error">
+            <f:render partial="FieldError.html" arguments="{property: 'password'}"/>
+        </div>
+    </div>
+    <f:render partial="FieldError.html" arguments="{property: 'password'}"/>        
+    <div class="ym-fbox">
+        <label for="cicregister-confirmPassword">Confirm Password: </label>
+		<f:form.password class="span4 {cr:ifIsError(key:'password', then:'f3-form-error')}" id="cicregister-confirmPassword" name="password[]"/>        
+        <div id="cicregister-confirmPassword-errors" class="errorWrap ym-error">
+            <f:render partial="FieldError.html" arguments="{property: 'password'}"/>
+        </div>
+    </div>
+    <div class="ym-fbox">
+        <input id="cicregister-submitButton" data-loading-text="Processing your registration..."
+				   class="ym-button ym-primary" style="float: left;" type="submit" name="" value="Register">
+    </div>
+</f:form>
